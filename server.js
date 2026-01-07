@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 8000;
 
 // Simple authentication for admin page (you should change this!)
 const ADMIN_USERNAME = 'kevin';
-const ADMIN_PASSWORD = 'kevin123'; // CHANGE THIS to something secure!
+const ADMIN_PASSWORD = 'k3v1n@12#'; // CHANGE THIS to something secure!
 
 // Function to verify basic auth
 function verifyAuth(req) {
